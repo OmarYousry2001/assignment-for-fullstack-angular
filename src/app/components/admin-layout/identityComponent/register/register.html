@@ -1,0 +1,86 @@
+<div class="my-special-component">
+    <section class="pt-5">
+        <div class="form-container">
+            <h2 class="text-center">Register</h2>
+            <form [formGroup]="formGroup" (ngSubmit)="Submit()">
+
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" class="form-control" formControlName="userName"
+                        [class.is-valid]="_userName?.valid"
+                        [class.is-invalid]="_userName?.invalid && _userName?.touched">
+
+                    @if (_userName?.hasError('required') && _userName?.touched) {
+                    <span class="text-danger">User name is required</span>
+                    } @else if (_userName?.hasError('minlength') && _userName?.touched) {
+                    <span class="text-danger">At least 2 characters</span>
+                    } @else if (_userName?.hasError('maxlength') && _userName?.touched) {
+                    <span class="text-danger">Maximum 100 characters</span>
+                    }
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" formControlName="email" [class.is-valid]="_email?.valid"
+                        [class.is-invalid]="_email?.invalid && _email?.touched">
+
+                    @if (_email?.hasError('required') && _email?.touched) {
+                    <span class="text-danger">Email is required</span>
+                    } @else if (_email?.hasError('email') && _email?.touched) {
+                    <span class="text-danger">Invalid email format</span>
+                    }
+                </div>
+
+                <!-- Password -->
+                <div class="form-group" style="position: relative;">
+                    <label for="password">Password</label>
+                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+                        [class.is-valid]="_password?.valid"
+                        [class.is-invalid]="_password?.invalid && _password?.touched">
+
+                    <span class="toggle-password" (click)="showPassword = !showPassword">
+                        <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </span>
+
+                    @if (_password?.hasError('required') && _password?.touched) {
+                    <span class="text-danger">Password is required</span>
+                    } @else if (_password?.hasError('pattern') && _password?.touched) {
+                    <span class="text-danger">
+                        Must contain upper, lower, number & special character
+                    </span>
+                    }
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group" style="position: relative;">
+                    <label for="passwordConfirmation">Confirm Password</label>
+                    <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control"
+                        formControlName="passwordConfirmation" [class.is-valid]="_passwordConfirmation?.valid"
+                        [class.is-invalid]="_passwordConfirmation?.invalid && _passwordConfirmation?.touched">
+
+                    <span class="toggle-password" (click)="showConfirmPassword = !showConfirmPassword">
+                        <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </span>
+
+                    @if (_passwordConfirmation?.hasError('required') && _passwordConfirmation?.touched) {
+                    <span class="text-danger">Confirm password is required</span>
+                    } @else if (_passwordConfirmation?.hasError('mismatch') && _passwordConfirmation?.touched) {
+                    <span class="text-danger">Passwords do not match</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-info w-100 mb-2" (click)="goBack()">
+                        <i class="fa fa-arrow-left"></i> Back
+                    </button>
+                    <button class="btn btn-info w-100" [disabled]="formGroup.invalid">
+                        Register <i class="fa fa-user-plus"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</div>

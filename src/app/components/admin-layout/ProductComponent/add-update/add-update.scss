@@ -1,0 +1,27 @@
+.my-special-component {
+  background-color: white; 
+  color: black; 
+  padding: 2rem; 
+  height: 100%
+}
+.remove-img-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(220, 53, 69, 0.85); 
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.remove-img-btn:hover {
+  background: #dc3545; 
+}

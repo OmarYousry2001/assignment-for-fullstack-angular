@@ -1,0 +1,45 @@
+.ecommerce-footer {
+  border-top: 1px solid #eee;
+  background: #f8f9fa;
+  .footer-logo {
+    height: 32px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .footer-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #17a2b8;
+    text-decoration: none;
+    letter-spacing: 1px;
+    &:hover {
+      color: #138496;
+    }
+  }
+  .footer-link {
+    color: #333 !important;
+    font-weight: 500;
+    margin: 0 8px;
+    text-decoration: none;
+    transition: color 0.2s;
+    &:hover {
+      color: #17a2b8 !important;
+      text-decoration: underline;
+    }
+  }
+  .footer-social a {
+    color: #17a2b8;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+    &:hover {
+      color: #138496;
+    }
+  }
+  .footer-copy {
+    font-size: 0.95rem;
+    color: #888;
+  }
+}
+img{
+    width: 80px;
+}

@@ -1,0 +1,113 @@
+<div class="my-special-component">
+    <div class="container mt-4">
+        <h2 class="mb-3"> {{isUpdate ?'Update':'Add'}} Project</h2>
+
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+            <!-- category -->
+            <div class="mb-3">
+                <label class="form-label">category</label>
+                <input type="text" class="form-control" formControlName="category"
+                    [class.is-valid]="_category?.valid && _category?.touched"
+                    [class.is-invalid]="_category?.invalid && _category?.touched" />
+
+                <div class="text-danger" *ngIf="_category?.touched && _category?.invalid">
+                    <small *ngIf="_category?.hasError('required')">category is required</small>
+                    <small *ngIf="_category?.hasError('minlength')">Minimum 2 characters</small>
+                    <small *ngIf="_category?.hasError('maxlength')">Maximum 100 characters</small>
+                </div>
+            </div>
+
+            <!-- productCode -->
+            <div class="mb-3">
+                <label class="form-label">product Code</label>
+                <input type="text" class="form-control" formControlName="productCode"
+                    [class.is-valid]="_productCode?.valid && _productCode?.touched"
+                    [class.is-invalid]="_productCode?.invalid && _productCode?.touched" />
+
+                <div class="text-danger" *ngIf="_productCode?.touched && _productCode?.invalid">
+                    <small *ngIf="_productCode?.hasError('required')">productCode is required</small>
+                    <small *ngIf="_productCode?.hasError('minlength')">Minimum 2 characters</small>
+                    <small *ngIf="_productCode?.hasError('maxlength')">Maximum 100 characters</small>
+                </div>
+            </div>
+
+            <!-- name -->
+            <div class="mb-3">
+                <label class="form-label"> name</label>
+                <input type="text" class="form-control" formControlName="name"
+                    [class.is-valid]="_name?.valid && _name?.touched"
+                    [class.is-invalid]="_name?.invalid && _name?.touched" />
+
+                <div class="text-danger" *ngIf="_name?.touched && _name?.invalid">
+                    <small *ngIf="_name?.hasError('required')"> Name is required</small>
+                    <small *ngIf="_name?.hasError('minlength')">Minimum 2 characters</small>
+                    <small *ngIf="_name?.hasError('maxlength')">Maximum  100 characters</small>
+                </div>
+            </div>
+
+            <!-- price -->
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-control" formControlName="price"
+                    [class.is-valid]="_price?.valid && _price?.touched"
+                    [class.is-invalid]="_price?.invalid && _price?.touched" />
+
+                <div class="text-danger" *ngIf="_price?.touched && _price?.invalid">
+                    <small *ngIf="_price?.hasError('required')">price is required</small>
+                    <small *ngIf="_price?.hasError('min')">Minimum 2 Numbers</small>
+                    <small *ngIf="_price?.hasError('max')">Price cannot exceed {{ maxNumber}}</small>
+                </div>
+
+
+            </div>
+
+            <!-- minimumQuantity -->
+            <div class="mb-3">
+                <label class="form-label">Minimum Quantity</label>
+                <input type="number" class="form-control" formControlName="minimumQuantity"
+                    [class.is-valid]="_minimumQuantity?.valid && _minimumQuantity?.touched"
+                    [class.is-invalid]="_minimumQuantity?.invalid && _minimumQuantity?.touched"/>
+
+                <div class="text-danger" *ngIf="_minimumQuantity?.touched && _minimumQuantity?.invalid">
+                    <small *ngIf="_minimumQuantity?.hasError('required')">minimum Quantity Me is required</small>
+                    <small *ngIf="_minimumQuantity?.hasError('minlength')">  Minimum 2 Numbers </small>
+                    <small *ngIf="_minimumQuantity?.hasError('maxlength')">  Minimum Quantity cannot exceed {{ maxNumber }}</small>
+                </div>
+            </div>
+
+   <!-- discountRate -->
+            <div class="mb-3">
+                <label class="form-label">Discount Rate</label>
+                <input type="number" class="form-control" formControlName="discountRate"
+                    [class.is-valid]="_discountRate?.valid && _discountRate?.touched"
+                    [class.is-invalid]="_discountRate?.invalid && _discountRate?.touched"/>
+
+                <div class="text-danger" *ngIf="_discountRate?.touched && _discountRate?.invalid">
+                    <small *ngIf="_discountRate?.hasError('required')">discount Rate Me is required</small>
+                    <small *ngIf="_discountRate?.hasError('minlength')">  Minimum 0 Numbers </small>
+                    <small *ngIf="_discountRate?.hasError('maxlength')">  discount Rate cannot exceed {{ 1 }}</small>
+                </div>
+            </div>
+
+
+            <!-- Uploads -->
+                <div class="mb-3">
+                    <label>Image</label>
+                    <div *ngIf="imgPreviewUrl" class="mt-2">
+                        <img [src]="imgPreviewUrl" alt="Logo Preview" class="img-thumbnail" style="max-height:150px" />
+                    </div>
+                    <input type="file" class="form-control" (change)="onFileSelected($event, 'image')" />
+
+                </div>
+
+
+
+
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Save</button>
+            <button type="button" class="btn btn-primary " (click)="goBack()">go Back</button>
+        </form>
+    </div>
+</div>
