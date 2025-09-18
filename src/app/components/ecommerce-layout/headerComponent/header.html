@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white ecommerce-header">
   <div class="container">
     <a class="navbar-brand" href="#">
-        <img src="assets/images/download.jpeg" alt="Ecommerce Banner" class="img-fluid home-banner rounded shadow" />
+      <img src="assets/images/download.jpeg" alt="Ecommerce Banner" class="img-fluid home-banner rounded shadow" />
       Simple E-commerce
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -22,8 +22,19 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/contact">Contact</a>
         </li>
-      
-        
+        @if(!isAuthenticated)
+        {
+        <button class="btn btn-outline-info ms-2" routerLink="/admin/account/Login">
+          <i class="fa fa-sign-out-alt"></i> Login
+        </button>
+        }
+        @else
+        {
+        <button class="btn btn-outline-info ms-2" (click)="logout()">
+          <i class="fa fa-sign-out-alt"></i> Logout
+        </button>
+        }
+
       </ul>
     </div>
   </div>

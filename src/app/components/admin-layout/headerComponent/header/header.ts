@@ -45,8 +45,6 @@ export class Header implements OnInit {
       this._identityService.isUserAuthenticated().subscribe({
       next: (value) => {
         this.isAuthenticated = value;
-        console.log('User Authenticated:', this.isAuthenticated); 
-
       }
    
   });
