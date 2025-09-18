@@ -51,9 +51,16 @@ Register(form: any): Observable<any> {
     }),
   
   );
+
 }
 
-
+refreshToken(oldRefreshToken: string) {
+  return this.http.post<any>(
+    this.baseURL + 'Authentication/RefreshToken',
+    oldRefreshToken, 
+    { withCredentials: true }
+  );
+}
 
 
 

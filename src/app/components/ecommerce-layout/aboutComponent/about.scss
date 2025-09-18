@@ -1,0 +1,31 @@
+.about-card {
+  border-radius: 18px;
+  background: #fff;
+  .about-avatar {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 2px 12px rgba(23,162,184,0.12);
+    border: 3px solid #17a2b8;
+  }
+  h2 {
+    font-size: 2rem;
+    color: #17a2b8;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .btn-info, .btn-outline-info {
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+  .list-group-item {
+    font-size: 1.05rem;
+    color: #555;
+    background: transparent;
+    border: none;
+    padding-left: 0;
+  }
+}

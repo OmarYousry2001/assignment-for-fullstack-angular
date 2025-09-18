@@ -1,17 +1,18 @@
 import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
 import { routes } from './app.routes';
+import { authInterceptor } from './Interceptor/auth-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-     provideHttpClient(withFetch()),
+     provideHttpClient(withFetch(),withInterceptors([authInterceptor])),
        importProvidersFrom(
       BrowserAnimationsModule,
       ToastrModule.forRoot({

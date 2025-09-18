@@ -1,1 +1,38 @@
-<p>product-details works!</p>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card product-details-card shadow-lg">
+        <div class="row g-0 align-items-center">
+          <div class="col-md-5 text-center p-4">
+            <img [src]="urlImages+product.imagePath" [alt]="product.name" class="img-fluid product-details-img rounded" />
+          </div>
+          <div class="col-md-7 p-4">
+            <h2 class="fw-bold text-info mb-2">{{ product.name }}</h2>
+            <ul class="list-group list-group-flush mb-3">
+              <li class="list-group-item">
+                <strong>Category:</strong> {{ product.category }}
+              </li>
+              <li class="list-group-item">
+                <strong>Product Code:</strong> {{ product.productCode }}
+              </li>
+              <li class="list-group-item">
+                <strong>Price:</strong>
+                <span class="fw-bold text-info">{{ product.price | currency }}</span>
+              </li>
+              <li class="list-group-item">
+                <strong>Minimum Quantity:</strong> {{ product.minimumQuantity }}
+              </li>
+              <li class="list-group-item">
+                <strong>Discount Rate:</strong> {{ product.discountRate }}%
+              </li>
+            </ul>
+            <div class="mb-4">
+            
+              <a [routerLink]="['/product']" class="btn btn-outline-info ms-3">Back to Products</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

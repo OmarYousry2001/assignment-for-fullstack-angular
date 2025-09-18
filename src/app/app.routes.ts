@@ -5,23 +5,22 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./components/ecommerce-layout/homecomponent/home').then(
-        (c) => c.Home
+      import('./components/ecommerce-layout/ecommerce-layout').then(
+        (c) => c.EcommerceLayout
       ),
     children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./components/ecommerce-layout/homecomponent/home').then(
+            (c) => c.Home
+          ),
+      },
       {
         path: 'product',
         loadComponent: () =>
           import('./components/ecommerce-layout/ProductComponent/product').then(
             (c) => c.Product
-          ),
-        canActivate: [authGuard],
-      },
-      {
-        path: 'about',
-        loadComponent: () =>
-          import('./components/ecommerce-layout/aboutComponent/about').then(
-            (c) => c.About
           ),
         canActivate: [authGuard],
       },
@@ -33,8 +32,26 @@ export const routes: Routes = [
           ).then((c) => c.ProductDetails),
         canActivate: [authGuard],
       },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./components/ecommerce-layout/aboutComponent/about').then(
+            (c) => c.About
+          ),
+        canActivate: [authGuard],
+      },
+         {
+        path: 'contact',
+        loadComponent: () =>
+          import('./components/ecommerce-layout/contactComponent/contact').then(
+            (c) => c.contact
+          ),
+        canActivate: [authGuard],
+      },
     ],
   },
+
+  // admin layout routes
   {
     path: 'admin',
     loadComponent: () =>
@@ -64,7 +81,6 @@ export const routes: Routes = [
             './components/admin-layout/identityComponent/register/register'
           ).then((c) => c.Register),
       },
-
       {
         path: 'product',
         loadComponent: () =>
